@@ -14,7 +14,6 @@ public class test
 		Contact e2 = new Contact("A ", "10/04/2023", "MAC", "Ahmed 7sn", "S", "S");
 		Contact e3 = new Contact("B", "10/04/2023", "MAC", "Ahmed 7sn", "S", "S");
 		Contact e4 = new Contact("Zyad", "10/04/2023", "MAC", "Ahmed 7sn", "S", "S");
-		System.out.println("Test\n");
 
 		listC.insert(e);
 
@@ -23,7 +22,6 @@ public class test
 		listC.insert(e3);
 		listC.insert(e4);
 		listC.print();
-		System.out.println();
 
 	}
 }
