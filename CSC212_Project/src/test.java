@@ -22,6 +22,8 @@ public class test
 		listC.insert(e3);
 		listC.insert(e4);
 		listC.print();
+		System.out.println("Khaled");
+		
 
 	}
 }
