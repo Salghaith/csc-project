@@ -38,7 +38,6 @@ public class test
 		listC.remove(e4);
 		System.out.println("************");
 		listC.print();
-		System.out.println("khaled");
 		
 
 	}

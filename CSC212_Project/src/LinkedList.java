@@ -146,7 +146,7 @@ public class LinkedList<T> implements Comparable<T>
         }
     }
 	
-	public boolean search ( T val ) {
+	public boolean search (T val) {
         Node <T> temp = head ;
         while ( temp != head) {
             if ( temp.data.equals(val))
