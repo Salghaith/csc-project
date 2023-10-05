@@ -145,7 +145,17 @@ public class LinkedList<T> implements Comparable<T>
             current = current.next;
         }
     }
-
+	
+	public boolean search ( T val ) {
+        Node <T> temp = head ;
+        while ( temp != head) {
+            if ( temp.data.equals(val))
+                return true;
+            temp = temp.next;
+        }
+        return false ;
+    }
+	
 	@Override
 	public int compareTo(T o) 
 	{
