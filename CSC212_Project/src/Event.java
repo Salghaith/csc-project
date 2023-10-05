@@ -2,11 +2,17 @@
 public class Event 
 {
 	public String title;
+	public String contactName;
 	public String date_time;
 	public String location;
-	public String contactName;
+	public Contact contact;
 	
 	
+	@Override
+	public String toString() {
+		return "Event title=" + title +"\n" + ", Contact Name=" + contactName + "\n" + ", date_time=" + date_time + "\n" +", location="
+				+ location;
+	}
 	public Event(Event val) 
 	{
 		this.title = val.title;
@@ -14,12 +20,13 @@ public class Event
 		this.location = val.location;
 		this.contactName = val.contactName;
 	}
-	public Event(String title, String date_time, String location, String contactName) 
+	public Event(String title, String date_time, String location, Contact c) 
 	{
 		this.title = title;
 		this.date_time = date_time;
 		this.location = location;
-		this.contactName = contactName;
+		Contact contact = c;
+		this.contactName = c.getName();
 	}
 	
 	public Event() 

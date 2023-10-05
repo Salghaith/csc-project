@@ -1,5 +1,5 @@
 
-public class Contact
+public class Contact	implements Comparable
 {
 
 	public String name;
@@ -8,7 +8,36 @@ public class Contact
 	public String address;
 	public String birthday;
 	public String notes;
+	public Event event;
 	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
+
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+
 	public Contact(Contact val) 
 	{
 		this.name = val.name;
@@ -67,5 +96,11 @@ public class Contact
 	public String getNotes() 
 	{
 		return notes;
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}	
 }

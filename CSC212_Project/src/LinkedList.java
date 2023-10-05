@@ -5,6 +5,14 @@ public class LinkedList<T> implements Comparable<T>
 	
 	private Node<T> current;
 	
+	public Node<T> getHead() {
+		return head;
+	}
+
+	public Node<T> getCurrent() {
+		return current;
+	}
+
 	public LinkedList() 
 	{
 		head=current=null;
@@ -39,7 +47,7 @@ public class LinkedList<T> implements Comparable<T>
          findFirst();
             while (current != null) 
             {
-                System.out.println("Title: " + ((Contact)(current).data).name);
+                System.out.println("Title: " + ((Event)(current).data).title);
                 //System.out.println("Date/Time: " + current.date_time);
                 //System.out.println("Location: " + current.location);
                 //System.out.println("Contact Name: " + current.contactName);
@@ -47,6 +55,7 @@ public class LinkedList<T> implements Comparable<T>
                 current = current.next;
             }
     }
+	
 	public void insert(T val) 
 	{
 		Node<T> tmp = new Node<T>(val);
@@ -87,7 +96,7 @@ public class LinkedList<T> implements Comparable<T>
 					current = current.next;
 				}
 			}
-			if(tmp.data instanceof Contact) 				
+			else if(tmp.data instanceof Contact) 				
 			{
 				Node<T> previous=null;
 				while(current!=null) 
@@ -155,6 +164,77 @@ public class LinkedList<T> implements Comparable<T>
         }
         return false ;
     }
+	public boolean searchContact (String val,int i) 
+	{
+		findFirst();
+		switch(i) 
+		{
+		case 1: 				// name	i=1
+			while(current!=null) 
+			{
+				if((((Contact)(current).data).name.equalsIgnoreCase(val)))
+					return true;
+				current = current.next;
+			}
+			return false;
+		case 2:					//number i=2
+			while(current!=null) 
+			{
+				if((((Contact)(current).data).phoneNumber.equalsIgnoreCase(val)))
+					return true;
+				current = current.next;
+			}
+			return false;
+		case 3:					//email i=3
+			while(current!=null) 
+			{
+				if((((Contact)(current).data).email.equalsIgnoreCase(val)))
+					System.out.println((((Contact)(current).data).getEmail()));
+				current = current.next;
+			}
+		case 4:					//address i=4
+			while(current!=null) 
+			{
+				if((((Contact)(current).data).address.equalsIgnoreCase(val)))
+					System.out.println((((Contact)(current).data).getAddress()));
+				current = current.next;
+			}
+		case 5:					//birthday i=5
+			while(current!=null) 
+			{
+				if((((Contact)(current).data).birthday.equalsIgnoreCase(val)))
+					System.out.println((((Contact)(current).data).getBirthday()));
+				current = current.next;
+			}
+		default:
+			return false;
+		}
+    }
+	
+	public T searchEvent(String val, int i) 
+	{
+		findFirst();
+		switch(i) 
+		{
+		case 1: 				// title	i=1
+			while(current!=null) 
+			{
+				if((((Event)(current).data).getTitle().equalsIgnoreCase(val)))
+					return current.getData();
+				current = current.next;
+			}return null;
+		case 2:					//Contact name  i=2
+			while(current!=null) 
+			{
+				if((((Event)(current).data).getContactName().equalsIgnoreCase(val)))
+					return current.getData();
+				current = current.next;
+			}
+			return null;
+		default:
+			return null;
+		}
+	}
 	
 	@Override
 	public int compareTo(T o) 
