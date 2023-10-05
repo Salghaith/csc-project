@@ -122,22 +122,29 @@ public class LinkedList<T> implements Comparable<T>
 		}
 	}
 
-	public void remove() 
-	{
-		if (current == head) 
-			head = head.next;
-		 else 
-		{
-			Node<T> tmp = head;
-			while (tmp.next != current)
-				tmp = tmp.next;
-			tmp.next = current.next;
-		}
-		if (current.next == null)
-			current = head;
-		else
-			current = current.next;
-	}
+	public void remove(T val) {
+        Node<T> temp = new Node<T>(val);
+		if (head == null) {
+            return;
+        }
+
+        if (head.data.equals(temp.data)) {
+            head = head.next;
+            return;
+        }
+
+        Node<T> current = head;
+        Node<T> previous = null;
+
+        while (current != null) {
+            if (current.data.equals(temp.data)) {
+                previous.next = current.next;
+                return;
+            }
+            previous = current;
+            current = current.next;
+        }
+    }
 
 	@Override
 	public int compareTo(T o) 
