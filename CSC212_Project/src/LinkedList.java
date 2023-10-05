@@ -147,11 +147,11 @@ public class LinkedList<T> implements Comparable<T>
     }
 	
 	public boolean search (T val) {
-        Node <T> temp = head ;
-        while ( temp != head) {
-            if ( temp.data.equals(val))
+        findFirst();
+        while (current != null) {
+            if ( current.data.equals(val))
                 return true;
-            temp = temp.next;
+            current = current.next;
         }
         return false ;
     }

@@ -35,7 +35,7 @@ public class test
 		listC.insert(e9);
 		listC.insert(e10);*/
 		listC.print();
-		listC.remove(e4);
+		System.out.println(listC.search(e10));
 		System.out.println("************");
 		listC.print();
 		
