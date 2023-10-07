@@ -164,50 +164,63 @@ public class LinkedList<T> implements Comparable<T>
         }
         return false ;
     }
-	public boolean searchContact (String val,int i) 
+	public Contact searchContact (String val,int i) 
 	{
+		Contact flag =null;
 		findFirst();
 		switch(i) 
 		{
 		case 1: 				// name	i=1
 			while(current!=null) 
 			{
-				if((((Contact)(current).data).name.equalsIgnoreCase(val)))
-					return true;
+				if((((Contact)(current).data).getName().equalsIgnoreCase(val)))
+					return (Contact)current.getData();
 				current = current.next;
 			}
-			return false;
+			return null;
 		case 2:					//number i=2
 			while(current!=null) 
 			{
-				if((((Contact)(current).data).phoneNumber.equalsIgnoreCase(val)))
-					return true;
+				if((((Contact)(current).data).getPhoneNumber().equalsIgnoreCase(val)))
+					return (Contact)current.getData();
 				current = current.next;
 			}
-			return false;
+			return null;
 		case 3:					//email i=3
 			while(current!=null) 
 			{
-				if((((Contact)(current).data).email.equalsIgnoreCase(val)))
-					System.out.println((((Contact)(current).data).getEmail()));
+				if((((Contact)(current).data).getEmail().equalsIgnoreCase(val))) 
+				{
+					System.out.println(((Contact)(current).data).toString());
+					flag = ((Contact)(current).data);
+				}
 				current = current.next;
 			}
+			return flag == null ? null : flag;
 		case 4:					//address i=4
 			while(current!=null) 
 			{
-				if((((Contact)(current).data).address.equalsIgnoreCase(val)))
-					System.out.println((((Contact)(current).data).getAddress()));
+				if((((Contact)(current).data).getAddress().equalsIgnoreCase(val))) 
+				{
+					System.out.println(((Contact)(current).data).toString());
+					flag = ((Contact)(current).data);
+				}
 				current = current.next;
 			}
+			return flag == null ? null : flag;
 		case 5:					//birthday i=5
 			while(current!=null) 
 			{
-				if((((Contact)(current).data).birthday.equalsIgnoreCase(val)))
-					System.out.println((((Contact)(current).data).getBirthday()));
+				
+				if((((Contact)(current).data).getBirthday().equalsIgnoreCase(val))) 
+				{
+					System.out.println(((Contact)(current).data).toString());
+					flag = ((Contact)(current).data);
+				}
 				current = current.next;
 			}
-		default:
-			return false;
+			return flag == null ? null : flag;
+			default : return null;
 		}
     }
 	
@@ -224,9 +237,10 @@ public class LinkedList<T> implements Comparable<T>
 				current = current.next;
 			}return null;
 		case 2:					//Contact name  i=2
+			Contact[] tmp = (((Event)(current).data).getContacts());
 			while(current!=null) 
 			{
-				if((((Event)(current).data).getContactName().equalsIgnoreCase(val)))
+				if(tmp[0].getName().equalsIgnoreCase(val))
 					return current.getData();
 				current = current.next;
 			}

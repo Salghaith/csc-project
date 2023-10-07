@@ -1,5 +1,5 @@
 
-public class Contact	implements Comparable
+public class Contact implements Comparable
 {
 
 	public String name;
@@ -10,6 +10,12 @@ public class Contact	implements Comparable
 	public String notes;
 	public Event event;
 	
+	@Override
+	public String toString() {
+		return "Contact [name=" + name + ", phoneNumber=" + phoneNumber + ", email=" + email + ", address=" + address
+				+ ", birthday=" + birthday + ", notes=" + notes + "]";
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
