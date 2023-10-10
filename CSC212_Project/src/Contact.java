@@ -12,8 +12,8 @@ public class Contact implements Comparable
 	
 	@Override
 	public String toString() {
-		return "Contact [name=" + name + ", phoneNumber=" + phoneNumber + ", email=" + email + ", address=" + address
-				+ ", birthday=" + birthday + ", notes=" + notes + "]";
+		return "\nName: " + name + "\nPhoneNumber: " + phoneNumber + "\nEmail Address: " + email + "\nAddress: " + address
+				+ "\nBirthday: " + birthday + "\nNotes: " + notes;
 	}
 
 	public void setName(String name) {
@@ -72,6 +72,10 @@ public class Contact implements Comparable
 		this.address = address;
 		this.birthday = birthday;
 		this.notes = notes;
+	}
+
+	public Event getEvent() {
+		return event;
 	}
 
 	public String getName() 

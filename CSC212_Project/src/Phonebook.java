@@ -20,12 +20,12 @@ public class Phonebook
 	}
 	public boolean addEvent(Event e) 	//This method will return true if Event added successfully, otherwise false.
 	{
+		
 		Node<Event> current = listE.getHead();
 		while(current!=null) 
 		{
 			if(current.getData().getDate_time().equals(e.getDate_time())) 
 			{
-				System.out.println("There is a conflict with another Event");
 				return false;
 			}
 			current = current.getNext();
@@ -33,16 +33,16 @@ public class Phonebook
 		listE.insert(e);
 		return true;
 	}
-	public String printEvent(String val,int i) 	//This method will search for an Event and return it as a String if founded successfully. 
+	public void printEvent(String val,int i) 	//This method will search for an Event and return it as a String if founded successfully. 
 	{	
 		Event e = (Event)listE.searchEvent(val, i);
 		if(e==null)
-			return "Event not found!";
+			System.out.println("Event not found!"); 
 		else 
-			return e.toString();
+			 System.out.println(e.toString());
 	}
 	
-	public void printAllEvents() 	//This method will print all the Events.
+	public void printAllEventsAlphabetically() 	//This method will print all the Events.
 	{
 		Node<Event> current = listE.getHead();
 		while(current!=null) 
@@ -87,22 +87,31 @@ public class Phonebook
 			System.out.println("Event not found!");
 		else 
 		{
-			for(Contact c : event.getContacts())
-				System.out.println(c.toString());
+			Node<Contact> current = listC.getHead();
+			while(current!=null) 
+			{
+				if(((Contact)current.getData()).getEvent().getTitle().equalsIgnoreCase(title))
+					System.out.println(current.getData().toString());
+				current=current.getNext();
+			}
 		}
 	}
-	public void deleteContact(String name) 
+	public void deleteContact(String name) 	//This method should delete the contact and his event.
 	{
 		Contact del = listC.searchContact(name, 1);
+		if(del==null)
+			System.out.println("\nContact not found to be deleted!");
+		else 
+		{
 		listC.remove(del);
 		Node<Event> current = listE.getHead();
 		while(current!=null) 
-		{
-			Contact[] contacts = current.getData().getContacts();
-			for(Contact c : contacts)
-				if(c==del)
+			{
+				if(((Event)current.getData()).getContact().getName().equalsIgnoreCase(del.getName()))
 					listE.remove(current.getData());
 			current=current.getNext();
+			}
+		System.out.println("\nContact was deleted successfully!");
 		}
 	}
 }

@@ -4,26 +4,26 @@ public class Event
 	public String title;
 	public String date_time;
 	public String location;
-	public Contact[] contacts;
+	public Contact contact;
 	
 	@Override
 	public String toString() {
-		return "Event title=" + title +"\n" + ", Contact Name=" + contacts[0].getName() + "\n" + ", date_time=" + date_time + "\n" +", location="
-				+ location;
+		return "\nEvent title: " + title + "\nContact Name: " + contact.getName() + "\nEvent date and time (MM/DD/YYYY HH:MM): " + date_time +"\nEvent location:"
+				+ location+"\n";
 	}
 	public Event(Event val) 
 	{
 		this.title = val.title;
 		this.date_time = val.date_time;
 		this.location = val.location;
-		this.contacts=val.contacts;
+		this.contact=val.contact;
 	}
-	public Event(String title, String date_time, String location, Contact[] c) 
+	public Event(String title, String date_time, String location, Contact c) 
 	{
 		this.title = title;
 		this.date_time = date_time;
 		this.location = location;
-		contacts = c;
+		contact = c;
 	}
 	
 	public Event() 
@@ -31,7 +31,7 @@ public class Event
 		this.title = null;
 		this.date_time = null;
 		this.location = null;
-		this.contacts=null;	
+		this.contact=null;	
 	}
 	
 	public String getTitle() 
@@ -49,9 +49,9 @@ public class Event
 		return location;
 	}
 	
-	public Contact[] getContacts() 
+	public Contact getContact() 
 	{
-		return contacts;
+		return contact;
 	}
 	
 }

@@ -229,22 +229,22 @@ public class LinkedList<T> implements Comparable<T>
 		findFirst();
 		switch(i) 
 		{
-		case 1: 				// title	i=1
+		case 1:					//Contact name  i=1
+			while(current!=null) 
+			{
+				Contact tmp = (((Event)(current).data).getContact());
+				if(tmp.getName().equalsIgnoreCase(val))
+					return current.getData();
+				current = current.next;
+			}
+			return null;
+		case 2: 				// title	i=2
 			while(current!=null) 
 			{
 				if((((Event)(current).data).getTitle().equalsIgnoreCase(val)))
 					return current.getData();
 				current = current.next;
 			}return null;
-		case 2:					//Contact name  i=2
-			Contact[] tmp = (((Event)(current).data).getContacts());
-			while(current!=null) 
-			{
-				if(tmp[0].getName().equalsIgnoreCase(val))
-					return current.getData();
-				current = current.next;
-			}
-			return null;
 		default:
 			return null;
 		}
