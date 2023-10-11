@@ -71,14 +71,26 @@ public class Phonebook
 	public void printByFirstName(String name) 	//This method will print all contacts with the same FirstName.
 	{
 		Node<Contact> current = listC.getHead();
+		boolean flag = false;
 		while(current!=null) 
 		{
 			String tmp = current.getData().getName();
+			
+			if (tmp.length() < name.length() || tmp.length() != name.length() && tmp.substring(name.length(), name.length() + 1).charAt(0) != ' ') 
+			{
+				current=current.getNext();
+				continue;
+			}
 			tmp = tmp.substring(0, name.length());
-			if(tmp.equalsIgnoreCase(name))
-				System.out.println(current.getData().toString());
+			if(tmp.equalsIgnoreCase(name)) 
+			{
+				System.out.println(current.getData().toString());	
+				flag=true;
+			}
 			current=current.getNext();
 		}
+		if(!flag)
+			System.out.println("No contact with first name: "+name);
 	}
 	public void printSameEvent(String title) 	//This method should print all contacts that share an event.
 	{
