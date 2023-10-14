@@ -45,11 +45,15 @@ public class Phonebook
 	public void printAllEventsAlphabetically() 	//This method will print all the Events.
 	{
 		Node<Event> current = listE.getHead();
+		boolean flag = false;
 		while(current!=null) 
 		{
 			System.out.println(current.getData().toString()+"\n");
+			flag=true;
 			current = current.getNext();
 		}
+		if(!flag)
+			System.out.println("No event scheduled!");
 	}
 	
 	public void searchForContact(String val , int i) //This method will print the contact if founded in the list.
@@ -61,11 +65,11 @@ public class Phonebook
 		}
 		else 
 		{
-		Contact c = listC.searchContact(val,i);
-		if(c==null)
-			System.out.println("Contact not found!");
-		else
-			System.out.println(c.toString());
+			Contact c = listC.searchContact(val,i);
+			if(c==null)
+				System.out.println("Contact not found!");
+			else
+				System.out.println(c.toString());
 		}
 	}
 	public void printByFirstName(String name) 	//This method will print all contacts with the same FirstName.

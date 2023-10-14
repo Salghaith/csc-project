@@ -1,19 +1,22 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class PhonebookApp {
+public class PhonebookApp 
+{
 	static LinkedList<Event> listE = new LinkedList<Event>();
 	static LinkedList<Contact> listC = new LinkedList<Contact>();
 	static Phonebook p = new Phonebook(listC, listE);
 	static Scanner sc = new Scanner(System.in);
 
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 
 		//////////////////////////////////////////////////
 		int choice;
 		System.out.println("Welcome to the Linked Tree Phonebook!");
 
-		do {
+		do 
+		{
 			System.out.println("\nPlease choose an option:");
 			System.out.println("1. Add a contact");
 			System.out.println("2. Search for a contact");
@@ -26,11 +29,13 @@ public class PhonebookApp {
 			System.out.println();
 			System.out.print("Enter your choice: ");
 
-			try {
+			try 
+			{
 				choice = sc.nextInt();
 				sc.nextLine();
 
-				switch (choice) {
+				switch (choice) 
+			  {
 				case 1: //Add a contact.
 					System.out.print("\nEnter the contact's name: ");
 					String contactName = sc.nextLine();
@@ -54,8 +59,10 @@ public class PhonebookApp {
 				case 2: //Search for a contact.
 					int j = 0;
 					boolean flag = true;
-					while (flag) {
-						try {
+					while (flag) 
+					{
+						try 
+						{
 							System.out.print(
 									"\nEnter search criteria: \n1.Name\n2.Phone Number\n3.Email Address\n4.Address\n5.Birthday\n\nEnter your choice: ");
 							j = sc.nextInt();
@@ -87,7 +94,8 @@ public class PhonebookApp {
 								System.out.println("Wrong input!");
 								flag = true;
 							}
-						} catch (InputMismatchException e) {
+						} catch (InputMismatchException e) 
+						{
 							System.out.println("\nInvalid input!, Please enter a valid choice (1-5).");
 							sc.nextLine();
 						}
@@ -109,7 +117,8 @@ public class PhonebookApp {
 					Contact contact = listC.searchContact(contName, 1);
 					if (contact == null)
 						System.out.println("Contact is not in the contact list!\n");
-					else {
+					else 
+					{
 						Event e = new Event(eventTitle, date_time, location, contact);
 						if (p.addEvent(e))
 							System.out.println("\nEvent scheduled successfully!");
@@ -119,27 +128,33 @@ public class PhonebookApp {
 					break;
 				case 5: //Print event details.
 					boolean check = true;
-					while (check) {
-						try {
+					while (check) 
+					{
+						try 
+						{
 							System.out.print(
 									"\nEnter search criteria: \n1.Contact name\n2.Event title\n\nEnter your choice: ");
 							int i = sc.nextInt();
 							sc.nextLine();
 							check = false;
-							if (i == 1) { //Search by contact name.
+							if (i == 1) //Search by contact name.
+							{ 
 								System.out.print("\nEnter the contact name: ");
 								p.printEvent(sc.next() + sc.nextLine(), i);
-							} else if (i == 2) {//Search by event title.
+							} else if (i == 2) //Search by event title.
+							{
 								System.out.print("\nEnter the event title: ");
 								p.printEvent(sc.next() + sc.nextLine(), i);
-							} else {
+							} else 
+							{
 								System.out.println("\nPlease enter a valid choice (1-2).");
 								check = true;
 							}
-						} catch (InputMismatchException e) {
+						} catch (InputMismatchException e) 
+						  {
 							System.out.println("\nInvalid input!, Please enter a valid choice (1-2).");
 							sc.nextLine();
-						}
+						  }
 					}
 					break;
 				case 6: //Print contacts by first name.
@@ -154,12 +169,13 @@ public class PhonebookApp {
 					break;
 				default:
 					System.out.println("\nInvalid choice, Please enter a valid choice (1-8).");
-				}
-			} catch (InputMismatchException e) { //Handle input mismatch exception
+			  }
+			} catch (InputMismatchException e) //Handle input mismatch exception
+			  { 
 				System.out.println("\nInvalid input, Please enter a valid choice (1-8).");
 				sc.nextLine();
 				choice = 0; //Reset choice
-			}
+			  }
 		} while (choice != 8);
 	}
 

@@ -7,7 +7,8 @@ public class Event
 	private Contact contact;
 	
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return "\nEvent title: " + title + "\nContact Name: " + contact.getName() + "\nEvent date and time (MM/DD/YYYY HH:MM): " + date_time +"\nEvent location:"
 				+ location+"\n";
 	}

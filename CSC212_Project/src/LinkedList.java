@@ -5,11 +5,13 @@ public class LinkedList<T> implements Comparable<T>
 	
 	private Node<T> current;
 	
-	public Node<T> getHead() {
+	public Node<T> getHead() 
+	{
 		return head;
 	}
 
-	public Node<T> getCurrent() {
+	public Node<T> getCurrent() 
+	{
 		return current;
 	}
 
@@ -30,19 +32,19 @@ public class LinkedList<T> implements Comparable<T>
 	{
 		current = head;
 	}
-	public void findnext() 
+	public void findnext() //no need.
 	{
 		current=current.next;
 	}
-	public T retrieve() 
+	public T retrieve() //no need.
 	{
 		return current.data;
 	}
-	public void update(T val) 
+	public void update(T val) //no need.
 	{
 		current.data=val;
 	}
-	public void print() 
+	public void print() //delete it.
     {
          findFirst();
             while (current != null) 
@@ -56,7 +58,7 @@ public class LinkedList<T> implements Comparable<T>
             }
     }
 	
-	public void insert(T val) 
+	public void insert(T val) //This method should add contact and event alphabetically.
 	{
 		Node<T> tmp = new Node<T>(val);
 		if (empty())
@@ -77,11 +79,12 @@ public class LinkedList<T> implements Comparable<T>
 							Node<T> x = head;
 							head = tmp;
 							head.next=x;
-						}else {
-						tmp = previous.next;
-						previous.next = new Node<T>(val);
-						previous = previous.next;
-						previous.next = tmp;
+						}else 
+						{
+							tmp = previous.next;
+							previous.next = new Node<T>(val);
+							previous = previous.next;
+							previous.next = tmp;
 						}
 						break;
 					}
@@ -109,11 +112,12 @@ public class LinkedList<T> implements Comparable<T>
 							Node<T> x = head;
 							head = tmp;
 							head.next=x;
-						}else {
-						tmp = previous.next;
-						previous.next = new Node<T>(val);
-						previous = previous.next;
-						previous.next = tmp;
+						}else 
+						{
+							tmp = previous.next;
+							previous.next = new Node<T>(val);
+							previous = previous.next;
+							previous.next = tmp;
 						}
 						break;
 					}
@@ -131,13 +135,16 @@ public class LinkedList<T> implements Comparable<T>
 		}
 	}
 
-	public void remove(T val) {
+	public void remove(T val) 
+	{	//This method should delete the given obj.
         Node<T> temp = new Node<T>(val);
-		if (head == null) {
+		if (head == null) 
+		{
             return;
         }
 
-        if (head.data.equals(temp.data)) {
+        if (head.data.equals(temp.data)) 
+        {
             head = head.next;
             return;
         }
@@ -145,8 +152,10 @@ public class LinkedList<T> implements Comparable<T>
         Node<T> current = head;
         Node<T> previous = null;
 
-        while (current != null) {
-            if (current.data.equals(temp.data)) {
+        while (current != null) 
+        {
+            if (current.data.equals(temp.data)) 
+            {
                 previous.next = current.next;
                 return;
             }
@@ -155,16 +164,18 @@ public class LinkedList<T> implements Comparable<T>
         }
     }
 	
-	public boolean search (T val) {
+	public boolean search (T val) 
+	{	//delete it.
         findFirst();
-        while (current != null) {
+        while (current != null) 
+        {
             if ( current.data.equals(val))
                 return true;
             current = current.next;
         }
         return false ;
     }
-	public Contact searchContact (String val,int i) 
+	public Contact searchContact (String val,int i) //This method will search for a contact based on their name,phone number,email,address,or birthday.
 	{
 		Contact flag =null;
 		findFirst();
@@ -224,7 +235,7 @@ public class LinkedList<T> implements Comparable<T>
 		}
     }
 	
-	public T searchEvent(String val, int i) 
+	public T searchEvent(String val, int i) 	//This method will search for an event by contact name or event title and return it.
 	{
 		findFirst();
 		switch(i) 
@@ -253,7 +264,6 @@ public class LinkedList<T> implements Comparable<T>
 	@Override
 	public int compareTo(T o) 
 	{
-		// TODO Auto-generated method stub
 		return 0;
 	}
 }

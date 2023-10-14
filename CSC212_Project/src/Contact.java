@@ -11,36 +11,44 @@ public class Contact implements Comparable
 	private Event event;
 	
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return "\nName: " + name + "\nPhoneNumber: " + phoneNumber + "\nEmail Address: " + email + "\nAddress: " + address
 				+ "\nBirthday: " + birthday + "\nNotes: " + notes;
 	}
 
-	public void setName(String name) {
+	public void setName(String name) 
+	{
 		this.name = name;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) 
+	{
 		this.phoneNumber = phoneNumber;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(String email) 
+	{
 		this.email = email;
 	}
 
-	public void setAddress(String address) {
+	public void setAddress(String address) 
+	{
 		this.address = address;
 	}
 
-	public void setBirthday(String birthday) {
+	public void setBirthday(String birthday) 
+	{
 		this.birthday = birthday;
 	}
 
-	public void setNotes(String notes) {
+	public void setNotes(String notes) 
+	{
 		this.notes = notes;
 	}
 
-	public void setEvent(Event event) {
+	public void setEvent(Event event) 
+	{
 		this.event = event;
 	}
 
@@ -74,7 +82,8 @@ public class Contact implements Comparable
 		this.notes = notes;
 	}
 
-	public Event getEvent() {
+	public Event getEvent() 
+	{
 		return event;
 	}
 
@@ -109,7 +118,8 @@ public class Contact implements Comparable
 	}
 
 	@Override
-	public int compareTo(Object o) {
+	public int compareTo(Object o) 
+	{
 		// TODO Auto-generated method stub
 		return 0;
 	}	
