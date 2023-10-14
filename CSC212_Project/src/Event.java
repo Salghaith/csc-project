@@ -1,10 +1,10 @@
 
 public class Event 
 {
-	public String title;
-	public String date_time;
-	public String location;
-	public Contact contact;
+	private String title;
+	private String date_time;
+	private String location;
+	private Contact contact;
 	
 	@Override
 	public String toString() {

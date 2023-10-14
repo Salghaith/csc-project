@@ -2,13 +2,13 @@
 public class Contact implements Comparable
 {
 
-	public String name;
-	public String phoneNumber;
-	public String email;
-	public String address;
-	public String birthday;
-	public String notes;
-	public Event event;
+	private String name;
+	private String phoneNumber;
+	private String email;
+	private String address;
+	private String birthday;
+	private String notes;
+	private Event event;
 	
 	@Override
 	public String toString() {

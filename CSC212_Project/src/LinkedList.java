@@ -47,7 +47,7 @@ public class LinkedList<T> implements Comparable<T>
          findFirst();
             while (current != null) 
             {
-                System.out.println("Title: " + ((Event)(current).data).title);
+                System.out.println("Title: " + ((Event)(current).data).getTitle());
                 //System.out.println("Date/Time: " + current.date_time);
                 //System.out.println("Location: " + current.location);
                 //System.out.println("Contact Name: " + current.contactName);
@@ -70,7 +70,7 @@ public class LinkedList<T> implements Comparable<T>
 				while(current!=null) 
 				{
 					
-					if(((Event)(tmp).data).title.compareTo(((Event)(current).data).title)<0) 
+					if(((Event)(tmp).data).getTitle().compareTo(((Event)(current).data).getTitle())<0) 
 					{
 						if(current==head) 
 						{
@@ -102,7 +102,7 @@ public class LinkedList<T> implements Comparable<T>
 				while(current!=null) 
 				{
 					
-					if(((Contact)(tmp).data).name.compareTo(((Contact)(current).data).name)<0) 
+					if(((Contact)(tmp).data).getName().compareTo(((Contact)(current).data).getName())<0) 
 					{
 						if(current==head) 
 						{
