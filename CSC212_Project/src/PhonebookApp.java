@@ -10,7 +10,6 @@ public class PhonebookApp
 
 	public static void main(String[] args) 
 	{
-
 		int choice;
 		System.out.println("Welcome to the Linked Tree Phonebook!");
 
