@@ -33,16 +33,21 @@ public class Phonebook
 		listE.insert(e);
 		return true;
 	}
-	public void printEvent(String val,int i) 	//This method will search for an Event and return it as a String if founded successfully. 
+	public void printEvent(String val,int i) 	//This method will search for an Event and print it, if founded successfully,,. 
 	{	
-		Event e = (Event)listE.searchEvent(val, i);
-		if(e==null)
-			System.out.println("Event not found!"); 
-		else 
-			 System.out.println(e.toString());
+		Event e = null;
+		if(i==1) 
+		{
+			e = listE.searchEvent(val,i);
+			if(e==null)
+				System.out.println("Event not found!");
+		}
+		else
+			printSameEvent(val);
+		 
 	}
 	
-	public void printAllEventsAlphabetically() 	//This method will print all the Events.
+	public void printAllEventsAlphabetically() 	//This method will print all the Events alphabetically.
 	{
 		Node<Event> current = listE.getHead();
 		boolean flag = false;
@@ -53,7 +58,7 @@ public class Phonebook
 			current = current.getNext();
 		}
 		if(!flag)
-			System.out.println("No event scheduled!");
+			System.out.println("No event scheduled!.");
 	}
 	
 	public void searchForContact(String val , int i) //This method will print the contact if founded in the list.
@@ -72,7 +77,7 @@ public class Phonebook
 				System.out.println(c.toString());
 		}
 	}
-	public void printByFirstName(String name) 	//This method will print all contacts with the same FirstName.
+	public void printByFirstName(String name) 	//This method should print all contacts that share the FirstName.
 	{
 		Node<Contact> current = listC.getHead();
 		boolean flag = false;
@@ -80,7 +85,7 @@ public class Phonebook
 		{
 			String tmp = current.getData().getName();
 			
-			if (tmp.length() < name.length() || tmp.length() != name.length() && tmp.substring(name.length(), name.length() + 1).charAt(0) != ' ') 
+			if (tmp.length() < name.length() || tmp.length() != name.length() && tmp.charAt(name.length()) != ' ') 
 			{
 				current=current.getNext();
 				continue;
@@ -94,25 +99,25 @@ public class Phonebook
 			current=current.getNext();
 		}
 		if(!flag)
-			System.out.println("No contact with first name: "+name);
+			System.out.println("\nNo contact with first name: "+name);
 	}
 	public void printSameEvent(String title) 	//This method should print all contacts that share an event.
 	{
-		Event event = listE.searchEvent(title, 1);
+		Event event = listE.searchEvent(title, 2);
 		if(event==null)
 			System.out.println("Event not found!");
 		else 
 		{
-			Node<Contact> current = listC.getHead();
+			Node<Event> current = listE.getHead();
 			while(current!=null) 
 			{
-				if(((Contact)current.getData()).getEvent().getTitle().equalsIgnoreCase(title))
+				if(((Event)current.getData()).getTitle().equalsIgnoreCase(title))
 					System.out.println(current.getData().toString());
 				current=current.getNext();
 			}
 		}
 	}
-	public void deleteContact(String name) 	//This method should delete the contact and his event.
+	public void deleteContact(String name) 	//This method should delete the contact and their event.
 	{
 		Contact del = listC.searchContact(name, 1);
 		if(del==null)
@@ -130,4 +135,5 @@ public class Phonebook
 		System.out.println("\nContact was deleted successfully!");
 		}
 	}
+	
 }
