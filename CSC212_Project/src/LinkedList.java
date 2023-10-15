@@ -30,83 +30,44 @@ public class LinkedList<T> implements Comparable<T>
 		current = head;
 	}
 
-	public void insert(T val) //This method should add contact and event alphabetically.
-	{
-		Node<T> tmp = new Node<T>(val);
-		if (empty())
-			current = head = tmp;
-		else 
-		{	
-			findFirst();
-			if(tmp.data instanceof Event) 				
-			{
-				Node<T> previous=null;
-				while(current!=null) 
-				{
-					
-					if(((Event)(tmp).data).getTitle().compareTo(((Event)(current).data).getTitle())<0) 
-					{
-						if(current==head) 
-						{
-							Node<T> x = head;
-							head = tmp;
-							head.next=x;
-						}else 
-						{
-							tmp = previous.next;
-							previous.next = new Node<T>(val);
-							previous = previous.next;
-							previous.next = tmp;
-						}
-						break;
-					}
-					else if(current.next==null) 
-					{
-						tmp = current.next;
-						current.next = new Node<T>(val);
-						current = current.next;
-						current.next =null;
-					}
-					previous = current;
-					current = current.next;
-				}
-			}
-			else if(tmp.data instanceof Contact) 				
-			{
-				Node<T> previous=null;
-				while(current!=null) 
-				{
-					
-					if(((Contact)(tmp).data).getName().compareTo(((Contact)(current).data).getName())<0) 
-					{
-						if(current==head) 
-						{
-							Node<T> x = head;
-							head = tmp;
-							head.next=x;
-						}else 
-						{
-							tmp = previous.next;
-							previous.next = new Node<T>(val);
-							previous = previous.next;
-							previous.next = tmp;
-						}
-						break;
-					}
-					else if(current.next==null) 
-					{
-						tmp = current.next;
-						current.next = new Node<T>(val);
-						current = current.next;
-						current.next =null;
-					}
-					previous = current;
-					current = current.next;
-				}
-			}
-		}
-	}
-
+	public void insert(T val) 	//This method should add contact and event alphabetically.
+	{	
+        Node<T> tmp = new Node<T>(val);
+        if (empty())
+            current = head = tmp;
+        else 
+        {
+            findFirst();
+            Node<T> previous = null;
+            while (current != null) 
+            {
+                if (((Comparable<T>) tmp.getData()).compareTo(current.getData()) < 0) 
+                {
+                    if (current == head) 
+                    {
+                        Node<T> x = head;
+                        head = tmp;
+                        head.next = x;
+                    } else 
+                    {
+                        tmp = previous.next;
+                        previous.next = new Node<T>(val);
+                        previous = previous.next;
+                        previous.next = tmp;
+                    }
+                    break;
+                } else if (current.next == null) 
+                {
+                    tmp = current.next;
+                    current.next = new Node<T>(val);
+                    current = current.next;
+                    current.next = null;
+                }
+                previous = current;
+                current = current.next;
+            }
+        }
+    }
 	public void remove(T val) //This method should delete the given obj.
 	{	
         Node<T> temp = new Node<T>(val);

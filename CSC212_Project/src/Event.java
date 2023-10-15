@@ -54,5 +54,7 @@ public class Event
 	{
 		return contact;
 	}
-	
+	public int compareTo(Event o) {
+        return this.title.toUpperCase().compareTo(o.title.toUpperCase());
+    }
 }
