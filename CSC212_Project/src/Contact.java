@@ -1,5 +1,5 @@
 
-public class Contact implements Comparable
+public class Contact implements Comparable<Contact>
 {
 
 	private String name;
@@ -118,8 +118,7 @@ public class Contact implements Comparable
 	}
 
 	@Override
-	public int compareTo(Object o) 
-	{
+	public int compareTo(Contact o) {
 		// TODO Auto-generated method stub
 		return 0;
 	}	

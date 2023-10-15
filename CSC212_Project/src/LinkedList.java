@@ -24,40 +24,12 @@ public class LinkedList<T> implements Comparable<T>
 	{
 		return head==null;
 	}
-	public boolean last() 
-	{
-			return current.next==null;
-	}
+
 	public void findFirst() 
 	{
 		current = head;
 	}
-	public void findnext() //no need.
-	{
-		current=current.next;
-	}
-	public T retrieve() //no need.
-	{
-		return current.data;
-	}
-	public void update(T val) //no need.
-	{
-		current.data=val;
-	}
-	public void print() //delete it.
-    {
-         findFirst();
-            while (current != null) 
-            {
-                System.out.println("Title: " + ((Event)(current).data).getTitle());
-                //System.out.println("Date/Time: " + current.date_time);
-                //System.out.println("Location: " + current.location);
-                //System.out.println("Contact Name: " + current.contactName);
-                System.out.println();
-                current = current.next;
-            }
-    }
-	
+
 	public void insert(T val) //This method should add contact and event alphabetically.
 	{
 		Node<T> tmp = new Node<T>(val);
@@ -135,8 +107,8 @@ public class LinkedList<T> implements Comparable<T>
 		}
 	}
 
-	public void remove(T val) 
-	{	//This method should delete the given obj.
+	public void remove(T val) //This method should delete the given obj.
+	{	
         Node<T> temp = new Node<T>(val);
 		if (head == null) 
 		{
@@ -164,17 +136,6 @@ public class LinkedList<T> implements Comparable<T>
         }
     }
 	
-	public boolean search (T val) 
-	{	//delete it.
-        findFirst();
-        while (current != null) 
-        {
-            if ( current.data.equals(val))
-                return true;
-            current = current.next;
-        }
-        return false ;
-    }
 	public Contact searchContact (String val,int i) //This method will search for a contact based on their name,phone number,email,address,or birthday.
 	{
 		Contact flag =null;
@@ -235,31 +196,39 @@ public class LinkedList<T> implements Comparable<T>
 		}
     }
 	
-	public T searchEvent(String val, int i) 	//This method will search for an event by contact name or event title and return it.
+	public Event searchEvent(String val, int i) 	//This method will search for an event by contact name or event title and return it.
 	{
 		findFirst();
+		Event flag=null;
+		int flag2=0;
 		switch(i) 
 		{
 		case 1:					//Contact name  i=1
 			while(current!=null) 
 			{
 				Contact tmp = (((Event)(current).data).getContact());
-				if(tmp.getName().equalsIgnoreCase(val))
-					return current.getData();
+				if(tmp.getName().equalsIgnoreCase(val)) 
+				{
+					if(flag2++==0)System.out.println("Event found!");
+					System.out.println(((Event)current.getData()).toString());
+					flag = (Event) current.getData();
+				}
 				current = current.next;
 			}
-			return null;
+			return flag == null ? null : flag;
+			
 		case 2: 				// title	i=2
 			while(current!=null) 
 			{
 				if((((Event)(current).data).getTitle().equalsIgnoreCase(val)))
-					return current.getData();
+					return (Event)current.getData();
 				current = current.next;
 			}return null;
 		default:
 			return null;
 		}
 	}
+
 	
 	@Override
 	public int compareTo(T o) 

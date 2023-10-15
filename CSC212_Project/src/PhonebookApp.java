@@ -11,7 +11,6 @@ public class PhonebookApp
 	public static void main(String[] args) 
 	{
 
-		//////////////////////////////////////////////////
 		int choice;
 		System.out.println("Welcome to the Linked Tree Phonebook!");
 
@@ -57,7 +56,7 @@ public class PhonebookApp
 						System.out.println("\n\nContact is already in the contact list!\n");
 					break;
 				case 2: //Search for a contact.
-					int j = 0;
+					int choice2 = 0;
 					boolean flag = true;
 					while (flag) 
 					{
@@ -65,30 +64,30 @@ public class PhonebookApp
 						{
 							System.out.print(
 									"\nEnter search criteria: \n1.Name\n2.Phone Number\n3.Email Address\n4.Address\n5.Birthday\n\nEnter your choice: ");
-							j = sc.nextInt();
+							choice2 = sc.nextInt();
 							sc.nextLine();
 							flag = false;
 							System.out.println();
-							switch (j) {
+							switch (choice2) {
 							case 1: //Search by name
 								System.out.print("Enter the contact's name: ");
-								p.searchForContact(sc.next() + sc.nextLine(), j);
+								p.searchForContact(sc.next() + sc.nextLine(), choice2);
 								break;
 							case 2: //Search by phone number
 								System.out.print("Enter the contact's phone number: ");
-								p.searchForContact(sc.next() + sc.nextLine(), j);
+								p.searchForContact(sc.next() + sc.nextLine(), choice2);
 								break;
 							case 3: //Search by email address
 								System.out.print("Enter the contact's email Address: ");
-								p.searchForContact(sc.next() + sc.nextLine(), j);
+								p.searchForContact(sc.next() + sc.nextLine(), choice2);
 								break;
 							case 4: //Search by address
 								System.out.print("Enter the contact's address: ");
-								p.searchForContact(sc.next() + sc.nextLine(), j);
+								p.searchForContact(sc.next() + sc.nextLine(), choice2);
 								break;
 							case 5: //Search by birthday
 								System.out.print("Enter the contact's birthday: ");
-								p.searchForContact(sc.next() + sc.nextLine(), j);
+								p.searchForContact(sc.next() + sc.nextLine(), choice2);
 								break;
 							default:
 								System.out.println("Wrong input!");
@@ -134,17 +133,17 @@ public class PhonebookApp
 						{
 							System.out.print(
 									"\nEnter search criteria: \n1.Contact name\n2.Event title\n\nEnter your choice: ");
-							int i = sc.nextInt();
+							int choice5 = sc.nextInt();
 							sc.nextLine();
 							check = false;
-							if (i == 1) //Search by contact name.
+							if (choice5 == 1) //Search by contact name.
 							{ 
 								System.out.print("\nEnter the contact name: ");
-								p.printEvent(sc.next() + sc.nextLine(), i);
-							} else if (i == 2) //Search by event title.
+								p.printEvent(sc.next() + sc.nextLine(), choice5);
+							} else if (choice5 == 2) //Search by event title.
 							{
 								System.out.print("\nEnter the event title: ");
-								p.printEvent(sc.next() + sc.nextLine(), i);
+								p.printEvent(sc.next() + sc.nextLine(), choice5);
 							} else 
 							{
 								System.out.println("\nPlease enter a valid choice (1-2).");
