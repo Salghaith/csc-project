@@ -2,7 +2,6 @@
 public class LinkedList<T> implements Comparable<T>
 {
 	private Node<T> head;
-	
 	private Node<T> current;
 	
 	public Node<T> getHead() 
@@ -30,7 +29,7 @@ public class LinkedList<T> implements Comparable<T>
 		current = head;
 	}
 
-	public void insert(T val) 	//This method should add contact and event alphabetically.
+	public void insert(T val) 	//This method adds given generic object and sorts alphabetically.
 	{	
         Node<T> tmp = new Node<T>(val);
         if (empty())
@@ -68,7 +67,7 @@ public class LinkedList<T> implements Comparable<T>
             }
         }
     }
-	public void remove(T val) //This method should delete the given obj.
+	public void remove(T val)  //This method deletes the given object from the linked list.
 	{	
         Node<T> temp = new Node<T>(val);
 		if (head == null) 
@@ -76,7 +75,7 @@ public class LinkedList<T> implements Comparable<T>
             return;
         }
 
-        if (head.data.equals(temp.data)) 
+        if (head.getData().equals(temp.getData())) 
         {
             head = head.next;
             return;
@@ -87,7 +86,7 @@ public class LinkedList<T> implements Comparable<T>
 
         while (current != null) 
         {
-            if (current.data.equals(temp.data)) 
+            if (current.getData().equals(temp.getData())) 
             {
                 previous.next = current.next;
                 return;
@@ -97,58 +96,58 @@ public class LinkedList<T> implements Comparable<T>
         }
     }
 	
-	public Contact searchContact (String val,int i) //This method will search for a contact based on their name,phone number,email,address,or birthday.
-	{
+	public Contact searchContact (String val,int i)//This method searches for a contact based on their name, phone number, email, address, or birthday and returns the contact.
+	{											   //It prints contact information if they share the same email, address, or birthday.
 		Contact flag =null;
 		findFirst();
 		switch(i) 
 		{
-		case 1: 				// name	i=1
+		case 1: 				 // Name  i=1
 			while(current!=null) 
 			{
-				if((((Contact)(current).data).getName().equalsIgnoreCase(val)))
+				if((((Contact)(current).getData()).getName().equalsIgnoreCase(val)))
 					return (Contact)current.getData();
 				current = current.next;
 			}
 			return null;
-		case 2:					//number i=2
+		case 2:					 // Phone number  i=2
 			while(current!=null) 
 			{
-				if((((Contact)(current).data).getPhoneNumber().equalsIgnoreCase(val)))
+				if((((Contact)(current).getData()).getPhoneNumber().equalsIgnoreCase(val)))
 					return (Contact)current.getData();
 				current = current.next;
 			}
 			return null;
-		case 3:					//email i=3
+		case 3:					 // Email  i=3
 			while(current!=null) 
 			{
-				if((((Contact)(current).data).getEmail().equalsIgnoreCase(val))) 
+				if((((Contact)(current).getData()).getEmail().equalsIgnoreCase(val))) 
 				{
-					System.out.println(((Contact)(current).data).toString());
-					flag = ((Contact)(current).data);
+					System.out.println(((Contact)(current).getData()).toString());
+					flag = ((Contact)(current).getData());
 				}
 				current = current.next;
 			}
 			return flag == null ? null : flag;
-		case 4:					//address i=4
+		case 4:					 // Address  i=4
 			while(current!=null) 
 			{
-				if((((Contact)(current).data).getAddress().equalsIgnoreCase(val))) 
+				if((((Contact)(current).getData()).getAddress().equalsIgnoreCase(val))) 
 				{
-					System.out.println(((Contact)(current).data).toString());
-					flag = ((Contact)(current).data);
+					System.out.println(((Contact)(current).getData()).toString());
+					flag = ((Contact)(current).getData());
 				}
 				current = current.next;
 			}
 			return flag == null ? null : flag;
-		case 5:					//birthday i=5
+		case 5:					 // Birthday  i=5
 			while(current!=null) 
 			{
 				
-				if((((Contact)(current).data).getBirthday().equalsIgnoreCase(val))) 
+				if((((Contact)(current).getData()).getBirthday().equalsIgnoreCase(val))) 
 				{
-					System.out.println(((Contact)(current).data).toString());
-					flag = ((Contact)(current).data);
+					System.out.println(((Contact)(current).getData()).toString());
+					flag = ((Contact)(current).getData());
 				}
 				current = current.next;
 			}
@@ -157,17 +156,17 @@ public class LinkedList<T> implements Comparable<T>
 		}
     }
 	
-	public Event searchEvent(String val, int i) 	//This method will search for an event by contact name or event title and return it.
-	{
+	public Event searchEvent(String val, int choice) 	//This method searches the event linked list by contact name or event title and returns the event.
+	{													// It prints event information if they share the same contact name.
 		findFirst();
 		Event flag=null;
 		int flag2=0;
-		switch(i) 
+		switch(choice) 
 		{
-		case 1:					//Contact name  i=1
+		case 1:					// Contact name  i=1
 			while(current!=null) 
 			{
-				Contact tmp = (((Event)(current).data).getContact());
+				Contact tmp = (((Event)(current).getData()).getContact());
 				if(tmp.getName().equalsIgnoreCase(val)) 
 				{
 					if(flag2++==0)System.out.println("Event found!");
@@ -178,10 +177,10 @@ public class LinkedList<T> implements Comparable<T>
 			}
 			return flag == null ? null : flag;
 			
-		case 2: 				// title	i=2
+		case 2: 				// Event title   i=2
 			while(current!=null) 
 			{
-				if((((Event)(current).data).getTitle().equalsIgnoreCase(val)))
+				if((((Event)(current).getData()).getTitle().equalsIgnoreCase(val)))
 					return (Event)current.getData();
 				current = current.next;
 			}return null;

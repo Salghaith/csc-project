@@ -50,7 +50,7 @@ public class PhonebookApp
 
 					Contact c = new Contact(contactName, phoneNumber, emailAddress, address, birthday, notes);
 					if (p.addContact(c))
-						System.out.println("\n\nContact added successfully!\n");
+						System.out.println("\nContact added successfully!");
 					else
 						System.out.println("\n\nContact is already in the contact list!\n");
 					break;
@@ -89,7 +89,7 @@ public class PhonebookApp
 								p.searchForContact(sc.next() + sc.nextLine(), choice2);
 								break;
 							default:
-								System.out.println("Wrong input!");
+								System.out.println("Invalid choice, Please enter a valid choice (1-5).");
 								flag = true;
 							}
 						} catch (InputMismatchException e) 
@@ -100,7 +100,7 @@ public class PhonebookApp
 					}
 					break;
 				case 3: //Delete a contact.
-					System.out.print("Enter the contact's name to be deleted: ");
+					System.out.print("\nEnter the contact's name to be deleted: ");
 					p.deleteContact(sc.nextLine());
 					break;
 				case 4: //Schedule an event.
@@ -114,7 +114,7 @@ public class PhonebookApp
 					String location = sc.nextLine();
 					Contact contact = listC.searchContact(contName, 1);
 					if (contact == null)
-						System.out.println("Contact is not in the contact list!\n");
+						System.out.println("\nContact is not in the contact list!");
 					else 
 					{
 						Event e = new Event(eventTitle, date_time, location, contact);
@@ -145,7 +145,7 @@ public class PhonebookApp
 								p.printEvent(sc.next() + sc.nextLine(), choice5);
 							} else 
 							{
-								System.out.println("\nPlease enter a valid choice (1-2).");
+								System.out.println("\nInvalid choice, Please enter a valid choice (1-2).");
 								check = true;
 							}
 						} catch (InputMismatchException e) 
@@ -163,7 +163,7 @@ public class PhonebookApp
 					p.printAllEventsAlphabetically();
 					break;
 				case 8: //Exit.
-					System.out.println("Exiting the program. Goodbye!");
+					System.out.println("Exiting the Phonebook. Goodbye!");
 					break;
 				default:
 					System.out.println("\nInvalid choice, Please enter a valid choice (1-8).");
