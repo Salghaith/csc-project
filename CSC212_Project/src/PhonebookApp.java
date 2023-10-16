@@ -89,7 +89,7 @@ public class PhonebookApp
 								p.searchForContact(sc.next() + sc.nextLine(), choice2);
 								break;
 							default:
-								System.out.println("Invalid choice, Please enter a valid choice (1-5).");
+								System.out.println("Invalid choice!, Please enter a valid choice (1-5).");
 								flag = true;
 							}
 						} catch (InputMismatchException e) 
@@ -145,7 +145,7 @@ public class PhonebookApp
 								p.printEvent(sc.next() + sc.nextLine(), choice5);
 							} else 
 							{
-								System.out.println("\nInvalid choice, Please enter a valid choice (1-2).");
+								System.out.println("\nInvalid choice!, Please enter a valid choice (1-2).");
 								check = true;
 							}
 						} catch (InputMismatchException e) 

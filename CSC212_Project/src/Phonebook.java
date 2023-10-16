@@ -116,7 +116,7 @@ public class Phonebook
 			}
 		}
 	}
-	public void deleteContact(String name) 	   //This method deletes the contact and their event.
+	public void deleteContact(String name) 	   //This method deletes the contact and all their events.
 	{
 		Contact del = listC.searchContact(name, 1);
 		if(del==null)
