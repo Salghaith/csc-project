@@ -1,3 +1,14 @@
+/****************************
+CLASS: PhonebookApp.java
+CSC212 Data structures - Project phase I
+Fall 2023
+EDIT DATE: 10/17/2023
+TEAM: HERMANOS
+AUTHORS:
+Khaled Abdulrahman AlHarbi, (443102249)
+Saud Nasser AlKatheeri, 	(443100710)
+Saleh Bader AlGhaith, 		(443101007)
+***********************************/
 import java.util.InputMismatchException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,55 +21,12 @@ public class PhonebookApp
 	static LinkedList<Contact> listC = new LinkedList<Contact>();
 	static Phonebook p = new Phonebook(listC, listE);
 	static Scanner sc = new Scanner(System.in);
-	
-	    public static boolean isValidDate(String inputDate) 
-	    {
-	        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-	        sdf.setLenient(false);
 
-	        try {
-	            Date date = sdf.parse(inputDate);
-	            return true;
-	        } catch (ParseException e) {
-	            return false;
-	        }
-	    }
-	    public static boolean isValidDateTime(String inputDateTime) {
-	        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-	        sdf.setLenient(false);
-
-	        try {
-	            Date dateTime = sdf.parse(inputDateTime);
-
-	            // Additional validation to ensure the date and time components are valid
-	            String[] components = inputDateTime.split(" ");
-	            if (components.length == 2) {
-	                String[] dateParts = components[0].split("/");
-	                String[] timeParts = components[1].split(":");
-
-	                int month = Integer.parseInt(dateParts[0]);
-	                int day = Integer.parseInt(dateParts[1]);
-	                int year = Integer.parseInt(dateParts[2]);
-	                int hour = Integer.parseInt(timeParts[0]);
-	                int minute = Integer.parseInt(timeParts[1]);
-
-	                if (month >= 1 && month <= 12 && day >= 1 && day <= 31 && year >= 1900 &&
-	                    hour >= 0 && hour <= 23 && minute >= 0 && minute <= 59) {
-	                    return true;
-	                }
-	            }
-	        } catch (ParseException | NumberFormatException | ArrayIndexOutOfBoundsException e) {
-	            // Parsing or validation failed
-	        }
-	        return false;
-	    }
-	    
 	public static void main(String[] args) 
 	{
 		int choice;
-		boolean bflag,dflag;
+		boolean bflag, dflag, pflag;
 		System.out.println("Welcome to the Linked Tree Phonebook!");
-
 		do 
 		{
 			System.out.println("\nPlease choose an option:");
@@ -76,28 +44,36 @@ public class PhonebookApp
 			{
 				choice = sc.nextInt();
 				sc.nextLine();
-				
 				switch (choice) 
-			  {
-				case 1: //Add a contact.
-					bflag = true;
+				{
+				case 1: // Add a contact.
+					bflag = pflag = true;
+
 					String birthday = "";
+					String phoneNumber = "";
 					System.out.print("\nEnter the contact's name: ");
 					String contactName = sc.nextLine();
-					System.out.print("Enter the contact's phone number: ");
-					String phoneNumber = sc.nextLine();
+					while (pflag) 
+					{
+						System.out.print("Enter the contact's phone number: ");
+						phoneNumber = sc.nextLine();
+						if (isValidPhoneNumber(phoneNumber))
+							pflag = false;
+						else
+							System.out.println("Invalid Phone number, Try again!");
+					}
 					System.out.print("Enter the contact's email address: ");
 					String emailAddress = sc.nextLine();
 					System.out.print("Enter the contact's address: ");
 					String address = sc.nextLine();
-					while(bflag) 
+					while (bflag) 
 					{
-					System.out.print("Enter the contact's birthday (MM/DD/YYYY): ");
-		            birthday = sc.nextLine();
-					if(isValidDate(birthday))
-						bflag = false;
-					else
-						System.out.println("Invalid birthday, Try again!");
+						System.out.print("Enter the contact's birthday (MM/DD/YYYY): ");
+						birthday = sc.nextLine();
+						if (isValidDate(birthday))
+							bflag = false;
+						else
+							System.out.println("Invalid birthday, Try again!");
 					}
 					System.out.print("Enter any notes for the contact: ");
 					String notes = sc.nextLine();
@@ -108,8 +84,9 @@ public class PhonebookApp
 					else
 						System.out.println("\n\nContact is already in the contact list!\n");
 					break;
-				case 2: //Search for a contact.
+				case 2: // Search for a contact.
 					int choice2 = 0;
+					bflag = pflag = true;
 					boolean flag = true;
 					while (flag) 
 					{
@@ -122,25 +99,43 @@ public class PhonebookApp
 							flag = false;
 							System.out.println();
 							switch (choice2) {
-							case 1: //Search by name
+							case 1: // Search by name
 								System.out.print("Enter the contact's name: ");
 								p.searchForContact(sc.next() + sc.nextLine(), choice2);
 								break;
-							case 2: //Search by phone number
-								System.out.print("Enter the contact's phone number: ");
-								p.searchForContact(sc.next() + sc.nextLine(), choice2);
+							case 2: // Search by phone number
+								String sPhoneNumber = "";
+								while (pflag) 
+								{
+									System.out.print("Enter the contact's phone number: ");
+									sPhoneNumber = sc.nextLine();
+									if (isValidPhoneNumber(sPhoneNumber))
+										pflag = false;
+									else
+										System.out.println("Invalid Phone number, Try again!");
+								}
+								p.searchForContact(sPhoneNumber, choice2);
 								break;
-							case 3: //Search by email address
+							case 3: // Search by email address
 								System.out.print("Enter the contact's email Address: ");
 								p.searchForContact(sc.next() + sc.nextLine(), choice2);
 								break;
-							case 4: //Search by address
+							case 4: // Search by address
 								System.out.print("Enter the contact's address: ");
 								p.searchForContact(sc.next() + sc.nextLine(), choice2);
 								break;
-							case 5: //Search by birthday
-								System.out.print("Enter the contact's birthday: ");
-								p.searchForContact(sc.next() + sc.nextLine(), choice2);
+							case 5: // Search by birthday
+								String sBirthday = "";
+								while (bflag) 
+								{
+									System.out.print("Enter the contact's birthday (MM/DD/YYYY): ");
+									sBirthday = sc.nextLine();
+									if (isValidDate(sBirthday))
+										bflag = false;
+									else
+										System.out.println("Invalid birthday, Try again!");
+								}
+								p.searchForContact(sBirthday, choice2);
 								break;
 							default:
 								System.out.println("Invalid choice!, Please enter a valid choice (1-5).");
@@ -153,25 +148,25 @@ public class PhonebookApp
 						}
 					}
 					break;
-				case 3: //Delete a contact.
+				case 3: // Delete a contact.
 					System.out.print("\nEnter the contact's name to be deleted: ");
 					p.deleteContact(sc.nextLine());
 					break;
-				case 4: //Schedule an event.
+				case 4: // Schedule an event.
 					dflag = true;
 					String date_time = "";
 					System.out.print("Enter event title: ");
 					String eventTitle = sc.nextLine();
 					System.out.print("Enter contact name: ");
 					String contName = sc.nextLine();
-					while(dflag)
+					while (dflag)
 					{
-					System.out.print("Enter event date and time (MM/DD/YYYY HH:MM): ");
-					date_time = sc.nextLine();
-					if(isValidDateTime(date_time))
-						dflag = false;
-					else
-						System.out.println("Invalid date and time, Try again!");
+						System.out.print("Enter event date and time (MM/DD/YYYY HH:MM): ");
+						date_time = sc.nextLine();
+						if (isValidDateTime(date_time))
+							dflag = false;
+						else
+							System.out.println("Invalid date and time, Try again!");
 					}
 					System.out.print("Enter event location: ");
 					String location = sc.nextLine();
@@ -187,7 +182,7 @@ public class PhonebookApp
 							System.out.println("\nThere is a conflict in time with another Event.\n");
 					}
 					break;
-				case 5: //Print event details.
+				case 5: // Print event details.
 					boolean check = true;
 					while (check) 
 					{
@@ -198,11 +193,11 @@ public class PhonebookApp
 							int choice5 = sc.nextInt();
 							sc.nextLine();
 							check = false;
-							if (choice5 == 1) //Search by contact name.
-							{ 
+							if (choice5 == 1) // Search by contact name.
+							{
 								System.out.print("\nEnter the contact name: ");
 								p.printEvent(sc.next() + sc.nextLine(), choice5);
-							} else if (choice5 == 2) //Search by event title.
+							} else if (choice5 == 2) // Search by event title.
 							{
 								System.out.print("\nEnter the event title: ");
 								p.printEvent(sc.next() + sc.nextLine(), choice5);
@@ -212,37 +207,93 @@ public class PhonebookApp
 								check = true;
 							}
 						} catch (InputMismatchException e) 
-						  {
+						{
 							System.out.println("\nInvalid input!, Please enter a valid choice (1-2).");
 							sc.nextLine();
-						  }
+						}
 					}
 					break;
-				case 6: //Print contacts by first name.
+				case 6: // Print contacts by first name.
 					System.out.print("\nEnter the first name: ");
 					p.printByFirstName(sc.next());
 					break;
-				case 7: //Print all events alphabetically.
+				case 7: // Print all events alphabetically.
 					p.printAllEventsAlphabetically();
 					break;
-				case 8: //Exit.
+				case 8: // Exit.
 					System.out.println("Exiting the Phonebook. Goodbye!");
 					break;
 				default:
 					System.out.println("\nInvalid choice, Please enter a valid choice (1-8).");
-			  }
-			}catch(InputMismatchException e) {
+				}
+			} catch (InputMismatchException e) 
+			{
 				System.out.println("\nInvalid input, Please enter a valid choice (1-8).");
 				sc.nextLine();
-				choice = 0; //Reset choice
+				choice = 0; // Reset choice
 			}
-			catch ( Exception ex) //Handle input mismatch exception
-			  { 
-				//System.out.println("\nInvalid input, Please enter a valid choice (1-8).");
+			catch (Exception ex) // Handle input mismatch exception
+			{
+				System.out.println("Something went wrong!");
 				sc.nextLine();
-				choice = 0; //Reset choice
-			  }
+				choice = 0; // Reset choice
+			}
 		} while (choice != 8);
 	}
+	public static boolean isValidDate(String inputDate) 
+    {
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        sdf.setLenient(false);
+        try 
+		{
+			Date date = sdf.parse(inputDate);
+			return true;
+		} catch (ParseException e) 
+        {
+            return false;
+        }
+    }
+    public static boolean isValidDateTime(String inputDateTime) 
+    {
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+        sdf.setLenient(false);
 
+        try 
+		{
+			Date dateTime = sdf.parse(inputDateTime);
+
+			// Additional validation to ensure the date and time components are valid
+			String[] components = inputDateTime.split(" ");
+			if (components.length == 2) 
+			{
+				String[] dateParts = components[0].split("/");
+				String[] timeParts = components[1].split(":");
+
+				int month = Integer.parseInt(dateParts[0]);
+				int day = Integer.parseInt(dateParts[1]);
+				int year = Integer.parseInt(dateParts[2]);
+				int hour = Integer.parseInt(timeParts[0]);
+				int minute = Integer.parseInt(timeParts[1]);
+
+				if (month >= 1 && month <= 12 && day >= 1 && day <= 31 && year >= 1900 && hour >= 0 && hour <= 23
+						&& minute >= 0 && minute <= 59) 
+                {
+                    return true;
+                }
+            }
+        } catch (ParseException | NumberFormatException | ArrayIndexOutOfBoundsException e) 
+        {
+            // Parsing or validation failed
+        }
+        return false;
+    }
+    public static boolean isValidPhoneNumber(String phoneNumber) 
+	{
+		for (int i = 0; i < phoneNumber.length(); i++)
+			if (phoneNumber.charAt(i) == 43) // In case of +.
+				continue;
+			else if (phoneNumber.charAt(i) > 57 | phoneNumber.charAt(i) < 48)
+				return false;
+		return true;
+	}
 }
