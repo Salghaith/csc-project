@@ -72,7 +72,6 @@ public class PhonebookApp
 			System.out.println("8. Exit");
 			System.out.println();
 			System.out.print("Enter your choice: ");
-
 			try 
 			{
 				choice = sc.nextInt();
