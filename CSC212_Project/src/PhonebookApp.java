@@ -160,7 +160,6 @@ public class PhonebookApp
 					break;
 				case 4: //Schedule an event.
 					dflag = true;
-					String date = "";
 					String date_time = "";
 					System.out.print("Enter event title: ");
 					String eventTitle = sc.nextLine();
