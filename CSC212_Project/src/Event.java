@@ -1,5 +1,5 @@
 
-public class Event 
+public class Event implements Comparable<Event> 
 {
 	private String title;
 	private String date_time;

@@ -1,5 +1,5 @@
 
-public class LinkedList<T> implements Comparable<T>
+public class LinkedList<T extends Comparable<T>> 
 {
 	private Node<T> head;
 	private Node<T> current;
@@ -40,7 +40,7 @@ public class LinkedList<T> implements Comparable<T>
             Node<T> previous = null;
             while (current != null) 
             {
-                if (((Comparable<T>) tmp.getData()).compareTo(current.getData()) < 0) 
+                if ((tmp.getData()).compareTo(current.getData()) < 0) 
                 {
                     if (current == head) 
                     {
@@ -110,7 +110,7 @@ public class LinkedList<T> implements Comparable<T>
 				current = current.next;
 			}
 			return null;
-		case 2:					 // Phone number  i=2
+		case 2:					 // Phone number i=2
 			while(current!=null) 
 			{
 				if((((Contact)(current).getData()).getPhoneNumber().equalsIgnoreCase(val)))
@@ -190,10 +190,7 @@ public class LinkedList<T> implements Comparable<T>
 	}
 
 	
-	@Override
-	public int compareTo(T o) 
-	{
-		return 0;
-	}
+
+
 }
 
