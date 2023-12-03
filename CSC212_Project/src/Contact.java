@@ -1,8 +1,14 @@
 /****************************
- * CLASS: Contact.java CSC212 Data structures - Project phase II Fall 2023 EDIT
- * DATE: 10/12/2023 TEAM: HERMANOS AUTHORS: Khaled Abdulrahman AlHarbi,
- * (443102249) Saud Nasser AlKatheeri, (443100710) Saleh Bader AlGhaith,
- * (443101007)
+ * CLASS: Contact.java 
+ * CSC212 Data structures - Project phase II Fall 2023 
+ * EDIT DATE:
+ * 11/15/2023 
+ * TEAM: 
+ * HERMANOS 
+ * AUTHORS: 
+ * Khaled Abdulrahman AlHarbi, (443102249)
+ * Saud Nasser AlKatheeri, (443100710) 
+ * Saleh Bader AlGhaith, (443101007)
  ***********************************/
 public class Contact implements Comparable<Contact> {
 

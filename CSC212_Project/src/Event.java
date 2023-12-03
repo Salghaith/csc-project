@@ -1,10 +1,14 @@
-import java.util.Arrays;
-
 /****************************
- * CLASS: Event.java CSC212 Data structures - Project phase II Fall 2023 EDIT
- * DATE: 10/17/2023 TEAM: HERMANOS AUTHORS: Khaled Abdulrahman AlHarbi,
- * (443102249) Saud Nasser AlKatheeri, (443100710) Saleh Bader AlGhaith,
- * (443101007)
+ * CLASS: Event.java 
+ * CSC212 Data structures - Project phase II Fall 2023 
+ * EDIT DATE:
+ * 11/18/2023 
+ * TEAM: 
+ * HERMANOS 
+ * AUTHORS: 
+ * Khaled Abdulrahman AlHarbi, (443102249)
+ * Saud Nasser AlKatheeri, (443100710) 
+ * Saleh Bader AlGhaith, (443101007)
  ***********************************/
 public class Event implements Comparable<Event> {
 	private String title;

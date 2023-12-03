@@ -1,8 +1,14 @@
 /****************************
- * CLASS: Phonebook.java CSC212 Data structures - Project phase II Fall 2023
- * EDIT DATE: 10/17/2023 TEAM: HERMANOS AUTHORS: Khaled Abdulrahman AlHarbi,
- * (443102249) Saud Nasser AlKatheeri, (443100710) Saleh Bader AlGhaith,
- * (443101007)
+ * CLASS: Phonebook.java 
+ * CSC212 Data structures - Project phase II Fall 2023 
+ * EDIT DATE:
+ * 12/2/2023 
+ * TEAM: 
+ * HERMANOS 
+ * AUTHORS: 
+ * Khaled Abdulrahman AlHarbi, (443102249)
+ * Saud Nasser AlKatheeri, (443100710) 
+ * Saleh Bader AlGhaith, (443101007)
  ***********************************/
 public class Phonebook {
 	LinkedList<Event> listE;
@@ -56,7 +62,7 @@ public class Phonebook {
 			current = current.getNext();
 		}
 		if (!flag)
-			System.out.println("No event scheduled!.");
+			System.out.println("\nNo event scheduled!.");
 	}
 
 	public void searchForContact(String val, int i) // This method prints the contact if founded in the list.
@@ -115,8 +121,11 @@ public class Phonebook {
 
 	public void deleteContact(String name) // This method deletes the contact and all their events.
 	{
-		if (!bst.remove_key(name))
+		if (!bst.remove_key(name)) {
 			System.out.println("\nContact not found to be deleted!");
+			return;
+		}
+			
 		else {
 			Node<Event> current = listE.getHead();
 			while (current != null) {

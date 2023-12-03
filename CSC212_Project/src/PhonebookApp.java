@@ -1,15 +1,16 @@
 
 /****************************
-CLASS: PhonebookApp.java
-CSC212 Data structures - Project phase II
-Fall 2023
-EDIT DATE: 10/17/2023
-TEAM: HERMANOS
-AUTHORS:
-Khaled Abdulrahman AlHarbi, (443102249)
-Saud Nasser AlKatheeri, 	(443100710)
-Saleh Bader AlGhaith, 		(443101007)
-***********************************/
+ * CLASS: PhonebookApp.java 
+ * CSC212 Data structures - Project phase II Fall 2023 
+ * EDIT DATE:
+ * 12/2/2023 
+ * TEAM: 
+ * HERMANOS 
+ * AUTHORS: 
+ * Khaled Abdulrahman AlHarbi, (443102249)
+ * Saud Nasser AlKatheeri, (443100710) 
+ * Saleh Bader AlGhaith, (443101007)
+ ***********************************/
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.text.ParseException;
@@ -112,7 +113,7 @@ public class PhonebookApp {
 								p.searchForContact(sPhoneNumber, choice2);
 								break;
 							case 3: // Search by email address
-								System.out.print("Enter the contact's email Address: ");
+								System.out.print("Enter the contact's email address: ");
 								p.searchForContact(sc.next() + sc.nextLine(), choice2);
 								break;
 							case 4: // Search by address
@@ -152,7 +153,7 @@ public class PhonebookApp {
 					int choice4 = 0;
 					while (check) {
 						try {
-							System.out.print("Enter type:\n1.event\n2.appointment\nEnter your choice:");
+							System.out.print("\nEnter type:\n1.event\n2.appointment\n\nEnter your choice: ");
 							choice4 = sc.nextInt();
 							sc.nextLine();
 							if (choice4 == 1 | choice4 == 2)
@@ -166,7 +167,7 @@ public class PhonebookApp {
 							sc.nextLine();
 						}
 					}
-					System.out.print("Enter event title: ");
+					System.out.print("\nEnter event title: ");
 					String eventTitle = sc.nextLine();
 					String[] stringArray = null;
 					ContactBST bstE = new ContactBST();
@@ -188,6 +189,7 @@ public class PhonebookApp {
 								bstE.insert(bst.searchName(stringArray[i]));
 						}
 						if (!flag4) {
+							System.out.println();
 							System.out.println(ContactNotFound + " not found in the Contact list!");
 							continue;
 						}
@@ -197,6 +199,7 @@ public class PhonebookApp {
 						String contName = sc.nextLine();
 						contName = contName.trim();
 						if (!bst.findkey(contName)) {
+							System.out.println();
 							System.out.println(contName + " not found in the Contact list!");
 							break;
 						} else
